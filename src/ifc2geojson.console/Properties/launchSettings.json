@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ifc2geojson": {
+      "commandName": "Project",
+      "commandLineArgs": "-i C:\\Users\\mm1004\\OneDrive - LINK Arkitektur\\Dokument\\1_LinkIO\\Papers\\ML Classification\\Lojobacken\\Lojobacken_IFC.ifc"
+    }
+  }
+}

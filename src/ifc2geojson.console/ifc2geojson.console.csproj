@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.6.0" />
+    <PackageReference Include="GeoJSON.Net" Version="1.2.14" />
+    <PackageReference Include="Xbim.Essentials" Version="5.1.274" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ifc2geojson.core\ifc2geojson.core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="spaces_all.ifc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
