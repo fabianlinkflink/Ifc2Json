@@ -17,13 +17,4 @@
     <ProjectReference Include="..\ifc2geojson.core\ifc2geojson.core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="assets\AC20-FZK-Haus.ifc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="assets\OneWallTwoWindows.ifc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

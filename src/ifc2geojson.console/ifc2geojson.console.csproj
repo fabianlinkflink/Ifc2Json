@@ -15,10 +15,4 @@
     <ProjectReference Include="..\ifc2geojson.core\ifc2geojson.core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="spaces_all.ifc">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

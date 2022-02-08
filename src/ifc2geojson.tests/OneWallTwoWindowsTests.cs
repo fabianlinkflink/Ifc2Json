@@ -55,14 +55,6 @@ namespace ifc2geojson.tests
             Assert.IsTrue(project.Windows[0].Name == "Windows_Sgl_Plain:910x910mm:285546");
 
 
-
-
-            // todo: fix following values
-            // Assert.IsTrue(project.Site.GlobalX == -3603.117269);
-            // Assert.IsTrue(project.Site.GlobalY == 305.257796);
-            // Assert.IsTrue(project.Site.BoundingBoxWidth == 352.5);
-            // Assert.IsTrue(project.Site.BoundingBoxHeight == 3000);
-            // Assert.IsTrue(project.Site.BoundingBoxLength == 6000);
             Assert.IsTrue(project.Site.GlobalZ == 0);
 
 

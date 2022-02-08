@@ -9,5 +9,7 @@ namespace ifc2geojson.core
 
         public Position ReferencePoint { get; set; }
 
+        public int GlobalZ { get; set; }
+
     }
 }
