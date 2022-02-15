@@ -8,9 +8,9 @@ namespace ifc2geojson.core
 {
     public static class PopulateCO2
     {
-        public static Project ParseCO2 (Project project)
+        public static Project ParseCO2 (Project project, string path)
         {
-           StreamReader r = new StreamReader("C:\\Users\\mm1004\\OneDrive - LINK Arkitektur\\Dokument\\1_LinkIO\\Papers\\ML Classification\\Lojobacken\\CO2Lojo.json");
+           StreamReader r = new StreamReader(path);
             
             string json = r.ReadToEnd();
             dynamic co2Items = JsonConvert.DeserializeObject(json);
@@ -28,23 +28,42 @@ namespace ifc2geojson.core
                             CO2 co2 = new CO2();
                             co2.Name = wall.Name;
                             co2.Thickness = wall.Thickness;
-                            co2.CO2m3 = wall.CO2;
+                            co2.CO2m3 = wall.CO2 / wall.Thickness;
 
                             emissionList.Add(co2);
                         }
                     }
                 }
             }
-            
-            foreach (Wall wall in project.Walls)
+            if (project.Exporter == "Revit")
             {
-                foreach(CO2 co2 in emissionList)
+                foreach (Wall wall in project.Walls)
                 {
-                    if(co2.Name == wall.ElementId)
-                    {
-                        wall.CO2 = co2.CO2m3;
 
-                        wall.Emisson = wall.CO2 * wall.Volume;
+                    foreach (CO2 co2 in emissionList)
+                    {
+                        if (co2.Thickness == wall.Width)
+                        {
+                            wall.CO2 = co2.CO2m3;
+
+                            wall.Emisson = wall.CO2 * wall.Volume;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Wall wall in project.Walls)
+                {
+
+                    foreach (CO2 co2 in emissionList)
+                    {
+                        if (co2.Name == wall.ElementId)
+                        {
+                            wall.CO2 = co2.CO2m3;
+
+                            wall.Emisson = wall.CO2 * wall.Volume;
+                        }
                     }
                 }
             }

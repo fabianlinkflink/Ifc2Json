@@ -35,6 +35,9 @@ namespace ifc2geojson.core
             {
                 project.FriendlyName = ((IfcProject)ifcProject).FriendlyName;
             }
+            var application = model.FederatedInstances.OfType<IIfcApplication>().FirstOrDefault();
+
+            project.Exporter = application.ApplicationIdentifier;
             project.Properties = GetPropertiesFromContext(ifcProject);
             ParseElement(project, ifcProject);
             
@@ -68,6 +71,8 @@ namespace ifc2geojson.core
             var windows = ParseWindows(ifcWindows);
             project.Windows = windows;
             */
+
+            project.Name = ifcProject.LongName;
 
             return project;
         }
