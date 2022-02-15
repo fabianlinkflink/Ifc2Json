@@ -18,8 +18,8 @@ namespace ifc2geojson
             Console.WriteLine("tool ifc2geojson");
             Parser.Default.ParseArguments<Options>(args).WithParsed(o =>
             {
-                string inputpath = "C:\\Users\\mm1004\\OneDrive - LINK Arkitektur\\Dokument\\1_LinkIO\\Papers\\ML Classification\\Strandboligerne\\";
-                string filename = "Strandboligerne.ifc";
+                string inputpath = "C:\\Users\\mm1004\\OneDrive - LINK Arkitektur\\Dokument\\1_LinkIO\\Papers\\ML Classification\\Haderslev\\";
+                string filename = "Haderslev.ifc";
                 string co2name = "CO2TV_Byen.json";
 
                 string inputfile = inputpath + filename;
@@ -52,7 +52,7 @@ namespace ifc2geojson
                     NullValueHandling = NullValueHandling.Ignore
                 };
 
-                var serializedProject = JsonConvert.SerializeObject(quickResult, JsonSettings);
+                var serializedProject = JsonConvert.SerializeObject(project, JsonSettings);
                 File.WriteAllText($"{inputpath}{project.Name}.json", serializedProject);
                 Console.WriteLine("File created: " + $"{project.Name}.json");
 

@@ -40,10 +40,6 @@ namespace ifc2geojson.core
                             wall.ElementId = id;
                         }
                     }
-
-                    if (wall.ElementId == "YVP10-2")
-                        wall.ElementId = "YV1";
-
                     #region AutoName
                     /*
                     if(wall.ElementId == "YVxx")
@@ -78,7 +74,6 @@ namespace ifc2geojson.core
                         }
                     }*/
                     #endregion
-
                     if (wall.ElementId.EndsWith("T"))
                     {
                         wall.ElementId = wall.ElementId.Remove(wall.ElementId.Length - 1, 1);
@@ -103,15 +98,22 @@ namespace ifc2geojson.core
                         }
                         else if (properties.Key == "Width")
                         {
-                            Xbim.Ifc4.MeasureResource.IfcLengthMeasure width = (Xbim.Ifc4.MeasureResource.IfcLengthMeasure)properties.Value;
-                            wall.Width = width;
+                            var width = TryConvertTo<object>(properties.Value);
+                            if(width == null)
+                            {
+                                wall.Width = (double)properties.Value;
+                            }
+                            else
+                            {
+                                Xbim.Ifc4.MeasureResource.IfcLengthMeasure ifcWidth = (Xbim.Ifc4.MeasureResource.IfcLengthMeasure)properties.Value;
+                                wall.Width = ifcWidth;
+                            }
 
                             if (wall.Width > 3)
                             {
                                 wall.Width = wall.Width / 1000;
                                 wall.Width = RoundUp(wall.Width, 2);
                             }
-
                         }
 
                         wall.ElementId = wall.GlobalId;
@@ -137,6 +139,20 @@ namespace ifc2geojson.core
         {
             double multiplier = Math.Pow(10, Convert.ToDouble(places));
             return Math.Ceiling(input * multiplier) / multiplier;
+        }
+
+        public static Object TryConvertTo<T>(object input)
+        {
+            Object result = null;
+            try
+            {
+                result = Convert.ChangeType(input, typeof(Xbim.Ifc4.MeasureResource.IfcLengthMeasure));
+            }
+            catch
+            {
+            }
+
+            return result;
         }
 
     }

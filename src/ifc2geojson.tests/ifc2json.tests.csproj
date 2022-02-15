@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ifc2geojson.core\ifc2geojson.core.csproj" />
+    <ProjectReference Include="..\ifc2geojson.core\ifc2json.core.csproj" />
   </ItemGroup>
 
 </Project>
