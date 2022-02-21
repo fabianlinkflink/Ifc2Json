@@ -37,7 +37,7 @@ namespace ifc2geojson.core
             }
             var application = model.FederatedInstances.OfType<IIfcApplication>().FirstOrDefault();
 
-            project.Exporter = application.ApplicationIdentifier;
+            project.Exporter = application.ApplicationFullName;
             project.Properties = GetPropertiesFromContext(ifcProject);
             ParseElement(project, ifcProject);
             

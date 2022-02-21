@@ -10,7 +10,7 @@ namespace ifc2geojson.core
     {
         public static Project ParseCO2 (Project project, string path)
         {
-           StreamReader r = new StreamReader(path);
+            StreamReader r = new StreamReader(path);
             
             string json = r.ReadToEnd();
             dynamic co2Items = JsonConvert.DeserializeObject(json);

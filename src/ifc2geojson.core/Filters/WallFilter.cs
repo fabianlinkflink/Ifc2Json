@@ -11,7 +11,7 @@ namespace ifc2geojson.core
         {
             foreach (Wall wall in project.Walls)
             {
-                if (project.Exporter == "Archicad")
+                if (project.Exporter == "ARCHICAD" || project.Exporter == "ARCHICAD-64")
                 {
                     wall.ObjectType = "Wall";
                     foreach (KeyValuePair<string, object> properties in wall.Properties)
@@ -41,7 +41,7 @@ namespace ifc2geojson.core
                         }
                     }
                     #region AutoName
-                    /*
+                    
                     if(wall.ElementId == "YVxx")
                     {
                         if(wall.Width == 0.125)
@@ -72,7 +72,7 @@ namespace ifc2geojson.core
                         {
                             wall.ElementId = "YV102";
                         }
-                    }*/
+                    }
                     #endregion
                     if (wall.ElementId.EndsWith("T"))
                     {
